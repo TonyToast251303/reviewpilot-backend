@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Review {
+  id                    Int      @id @default(autoincrement())
+  platform              String
+  author                String
+  rating                Int
+  text                  String
+  date                  DateTime
+  response              String?
+  lastSuggestedResponse String?
+
+  // optional owner
+  userId Int?
+  user   User? @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+
+  reviews Review[]
+}
