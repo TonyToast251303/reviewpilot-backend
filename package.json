@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "node server.js"
-  },
+ "scripts": {
+  "dev": "nodemon server.js",
+  "start": "node server.js",
+  "postinstall": "prisma generate",
+  "migrate:deploy": "prisma migrate deploy",
+  "railway:start": "npm run migrate:deploy && npm start"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
