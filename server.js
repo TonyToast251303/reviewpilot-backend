@@ -9,6 +9,10 @@ const prisma = new PrismaClient();
 const PORT = 4000;
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret';
 
+app.get("/health", (req, res) => {
+  res.json({ ok: true });
+});
+
 app.use(cors());
 app.use(express.json());
 
