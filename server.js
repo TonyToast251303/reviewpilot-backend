@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 const prisma = new PrismaClient();
-const PORT = 4000;
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret';
 
 app.get("/health", (req, res) => {
